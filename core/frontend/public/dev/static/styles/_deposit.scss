@@ -1,0 +1,55 @@
+section#user-deposit {
+    padding-top: 12px;
+
+    ul {
+        margin-top: 32px;
+
+        li.deposit-item {
+            width: $content-view-width;
+            padding: 12px;
+            margin: 12px auto;
+            box-sizing: border-box;
+            box-shadow: 0 0 2px #ccc;
+
+            div.repo-info {
+
+                a.repo-link {
+                    float: left;
+                }
+
+                div.repo-last-update {
+                    float: right;
+                }
+            }
+
+            div.repo-description {
+                clear: both;
+                padding-top: 6px;
+            }
+        }
+    }
+
+    div.empty-deposit {
+        width: 50%;
+        margin: 96px auto;
+
+        h2, h4 {
+            text-align: center;
+        }
+
+        h2 {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        h4 {
+            color: $grey;
+            margin-top: 8px;
+            font-size: 12px;
+
+            a {
+                color: $grey;
+            }
+        }
+    }
+}

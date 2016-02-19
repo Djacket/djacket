@@ -1,0 +1,15 @@
+<div class=empty-repo>{% if request.user.username == repo_owner %}<h2 id=empty-repo-message>Looks kinda lonesome in here!</h2><div id=empty-and-no-repo><h4 class=grey-color>You could create a local repository and then -></h4><pre>
+                <code>
+                    # create some files and folders.
+                    git init
+                    git add .
+                    git commit -m "initial commit"
+                    git remote add origin http://{{request.get_host}}/{{repo_owner}}/{{repo_name}}.git
+                    git push -u origin master
+                </code>
+            </pre></div><div id=empty-but-has-repo><h4 class=grey-color>or upload your currently working repository. -></h4><pre>
+                <code>
+                    git remote add origin http://{{request.get_host}}/{{repo_owner}}/{{repo_name}}.git
+                    git push -u origin master
+                </code>
+            </pre></div>{% else %}<p class=repo-message><i class="fa fa-quote-left"></i> This repository is empty. <i class="fa fa-quote-right"></i></p>{% endif %}</div>

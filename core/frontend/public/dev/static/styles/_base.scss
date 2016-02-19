@@ -1,0 +1,121 @@
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+    opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
+    -moz-animation:fadeIn ease-in 1;
+    -ms-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    -ms-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:0.4s;
+    -moz-animation-duration:0.4s;
+    -ms-animation-duration:0.4s;
+    animation-duration:0.4s;
+
+
+    -webkit-animation-delay: 0.1s;
+    -moz-animation-delay: 0.1s;
+    -ms-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+}
+
+input[type="hidden"] {
+    display: none !important;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.red-color {
+    color: $red !important;
+}
+
+.red-back {
+    background: $red;
+}
+
+.yellow-color {
+    color: $yellow;
+}
+
+.yellow-back {
+    background: $yellow;
+}
+
+.green-color {
+    color: $green;
+}
+
+.green-back {
+    background: $green;
+}
+
+.grey-color {
+    color: $grey;
+}
+
+.grey-back {
+    background: $grey;
+}
+
+#nprogress .bar {
+    background: $green;
+    height: 3px;
+    box-shadow: 0 0 3px $green-hover, 0 0 2px $green-hover;
+}
+
+.form-error {
+    text-align: center;
+}
+
+.border-top {
+    @include border-top();
+}
+
+.border-bottom {
+    @include border-bottom();
+}
+
+.seperator {
+    @include border-bottom();
+    width: 146px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.seperator-left {
+    @include border-bottom();
+    width: 146px;
+    text-align: center;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    text-align: center;
+    border-left: 32px solid transparent;
+    border-right: 32px solid transparent;
+    border-top: 8px solid #41443c;
+    margin-bottom: 24px;
+}

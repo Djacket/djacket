@@ -1,0 +1,31 @@
+{
+  "name": "djacket",
+  "version": "0.1.0",
+  "description": "A Git management system written in Python/Django https://djacket.github.io/",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Djacket/djacket.git"
+  },
+  "keywords": [
+    "git",
+    "web-interface",
+    "source-control",
+    "djacket"
+  ],
+  "author": "Moeen Zamani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Djacket/djacket/issues"
+  },
+  "homepage": "https://github.com/Djacket/djacket#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-minify-html": "^1.0.5",
+    "gulp-sass": "^2.1.1",
+    "gulp-uglify": "^1.5.1"
+  }
+}

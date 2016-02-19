@@ -1,0 +1,19 @@
+div#repo-graphs {
+    width: 100%;
+
+    div#graphs-loader {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 50%;
+        left: 55%;
+        @include translate(-50%, -50%);
+    }
+
+    canvas {
+        display: block;
+        margin: 64px auto;
+        width: $default-graph-width;
+        height: $default-graph-height;
+    }
+}

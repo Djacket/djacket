@@ -1,0 +1,25 @@
+div.empty-repo {
+    width: 100%;
+
+    h2#empty-repo-message {
+        border-bottom: 2px solid #fff;
+        padding-bottom: 8px;
+    }
+
+    h2, h4 {
+        font-weight: bold;
+    }
+
+    h2 {
+        display: block;
+        font-size: 1.5em;
+    }
+
+    div#empty-and-no-repo {
+        margin-top: 36px;
+    }
+
+    div#empty-but-has-repo {
+        margin-top: 16px;
+    }
+}

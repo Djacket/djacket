@@ -1,0 +1,67 @@
+aside#sidebar {
+    font-family: 'Oswald', sans-serif;
+    position: fixed;
+    background: $sidebar-background;
+    top: 0px;
+    left: 0px;
+    width: $sidebar-width;
+    height: 100%;
+    padding: 24px;
+    border-right: 1px solid $container-border-color;
+    @include border-box();
+
+    section#box {
+        position: fixed;
+        left: 0px;
+        width: 18px;
+        height: 18px;
+        background: $green;
+    }
+
+    section#title {
+        position: fixed;
+        left: 18px;
+        margin-left: 8px;
+
+        h4 {
+            font-style: italic;
+        }
+
+        h3 {
+            margin-top: 2px;
+        }
+    }
+
+    img#avatar-img {
+        width: 128px;
+        border-radius: 50%;
+    }
+
+    section#avatar {
+        margin-top: 64px;
+    }
+
+    section#sidebar-options {
+        margin-top: 32px;
+
+        ul {
+
+            i {
+                width: 18px;
+                height: 18px;
+                margin-right: 2px;
+            }
+        }
+    }
+
+    ul li {
+        margin-bottom: 12px;
+    }
+
+    footer {
+        position: absolute;
+        width: 100%;
+        font-size: 0.8em;
+        bottom: 24px;
+    }
+}

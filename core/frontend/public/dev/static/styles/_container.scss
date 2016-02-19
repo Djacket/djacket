@@ -1,0 +1,46 @@
+body {
+    background: $container-background;
+    background-size: 100% 100%;
+}
+
+section#container {
+    font-family: 'Droid Sans Mono', sans-serif;
+    margin-left: $sidebar-width;
+    min-height: 100%;
+    height: auto !important;
+    background: $container-background;
+    padding: 16px;
+    @include border-box();
+
+    header#view-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: 32px;
+
+        section#title {
+            float: left;
+
+            div {
+                float: left;
+                @include border-box();
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        section#options {
+            float: right;
+
+            ul li {
+                float: right;
+                margin-right: 12px;
+            }
+        }
+    }
+
+    section#content {
+        margin-top: 84px;
+        font-size: 13px;
+        box-sizing: border-box;
+        clear: both;
+    }
+}

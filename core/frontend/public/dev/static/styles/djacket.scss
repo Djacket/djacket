@@ -1,0 +1,118 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+
+@import 'reset';
+@import 'vars';
+@import 'mixins';
+@import 'base';
+@import 'forms';
+@import 'view-tabs';
+
+$default-text-color: #fff;
+
+body {
+    width: 100%;
+    height: 100%;
+    background: #272822;
+    background-size: 100% 100%;
+    color: $default-text-color;
+    font-family: 'Oswald', sans-serif;
+    overflow: hidden;
+
+    a {
+        text-decoration: none;
+        color: $default-text-color;
+    }
+
+    header#title-bar {
+        position: relative;
+        width: 50%;
+        text-align: center;
+        top: 40%;
+        left: 50%;
+        @include translate(-50%, -50%);
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-style: italic;
+            font-size: 96px;
+            color: $green;
+        }
+
+        h2 {
+            margin-top: 12px;
+            font-size: 32px;
+        }
+
+        ul {
+            position: absolute;
+            top: 140%;
+            left: 50%;
+            @include translate(-50%, -50%);
+            margin-top: 16px;
+            li {
+                font-size: 16px;
+                float: left;
+                margin-left: 12px;
+
+                i {
+                    width: 13px;
+                    margin-left: 6px;
+                    margin-right: 6px;
+                }
+            }
+        }
+
+        p {
+            font-size: 14px;
+            position: absolute;
+            top: 160%;
+            left: 50%;
+            @include translate(-50%, -50%);
+            color: $grey;
+            margin-top: 16px;
+
+            a {
+                color: $grey;
+            }
+        }
+
+    }
+
+    section#container {
+        position: relative;
+        width: 75%;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        @include translate(-50%, -50%);
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 48px;
+            color: $green;
+            margin-bottom: 8px;
+        }
+
+        .arrow-down {
+            margin-bottom: 12px;
+        }
+
+        div#user-auth {
+            font-family: 'Droid Sans Mono', sans-serif;
+            width: 40%;
+            margin: 32px auto;
+
+            .form-error {
+                font-size: 0.75em;
+            }
+        }
+    }
+
+}

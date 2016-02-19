@@ -1,0 +1,85 @@
+body {
+    color: white;
+}
+
+body a {
+    text-decoration: none;
+    color: white;
+}
+
+div#pjax-container {
+    .code-view {
+        pre {
+            background: #272822;
+        }
+    }
+
+    p.repo-message {
+        border-bottom: 2px solid #fff;
+        margin-top: 4px;
+        padding-bottom: 6px;
+        margin-bottom: 6px;
+    }
+
+    table#repo-content {
+        width: 100%;
+        border-spacing: 4px;
+        border-collapse: separate;
+
+        tbody {
+            tr {
+                td.repo-obj-name {
+                    width: 33%;
+                    text-align: left;
+
+                    i {
+                        width: 13px;
+                        height: 13px;
+                    }
+                }
+
+                td.repo-obj-subject {
+                    width: 33%;
+                    text-align: center;
+                }
+
+                td.repo-obj-commitdate {
+                    width: 33%;
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    article.markdown-preview {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 128px;
+        @include border-box();
+
+        .markdown-title {
+            display: none;
+            width: 75%;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding-bottom: 8px;
+            margin: 0 auto;
+            color: #fff;
+            border-bottom: 1px solid #41443c;
+        }
+
+        .arrow-down {
+            display: none;
+        }
+
+        .markdown-body {
+            @include border-box();
+            min-width: 25%;
+            max-width: 75%;
+            margin: 0 auto;
+            padding: 45px;
+            padding-top: 8px;
+        }
+    }
+}
