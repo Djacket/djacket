@@ -1,0 +1,40 @@
+{% extends 'base/session-base.html' %}
+
+{% block page_title %}
+    {{ request.user.username }}'s Settings
+{% endblock %}
+
+{% block view_title %}
+    <section id="title">
+        <h1>{{ request.user.username }}'s Settings</h1>
+    </section>
+    <section id="options">
+    </section>
+{% endblock %}
+
+{% block content %}
+    <div class="static-tabs">
+        <ul class="tab-links">
+            <li class="{% if active == 'info' %}active{% endif %}"><a href="#user-info"><i class="fa fa-info"></i> Info</a></li>
+            <li class="{% if active == 'profile' %}active{% endif %}"><a href="#user-profile"><i class="fa fa-user"></i> Profile</a></li>
+            <li><a href="#user-area51"><i class="fa fa-exclamation-triangle"></i> Area 51</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="user-info" class="tab {% if active == 'info' %}active{% endif %}">
+                <div id="user-info-settings">
+                    {% include 'base/user-info-form.html' %}
+                </div>
+            </div>
+            <div id="user-profile" class="tab {% if active == 'profile' %}active{% endif %}">
+                <div id="user-profile-settings">
+                    {% include 'base/user-profile-form.html' %}
+                </div>
+            </div>
+            <div id="user-area51" class="tab">
+                <div id="user-area51-settings">
+                    {% include 'base/user-area51-form.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

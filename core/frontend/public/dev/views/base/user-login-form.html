@@ -1,0 +1,33 @@
+{% if login_form.errors %}
+    <div class="form-errors">
+        {% for field in login_form %}
+            {% for error in field.errors %}
+                <p class="form-error red-color"><strong>*{{field.label}}: {{ error|escape }}</strong></p>
+            {% endfor %}
+        {% endfor %}
+        {% for error in login_form.non_field_errors %}
+            <p class="form-error red-color"><strong>*{{ error|escape }}</strong></p>
+        {% endfor %}
+    </div>
+{% endif %}
+{# Form design is borrowed from "http://www.sanwebe.com/2014/08/css-html-forms-designs" #}
+<form class="djacket-form" action="{% url 'user_login' %}" method="POST">
+    {% csrf_token %}
+    <ul>
+        <li>
+            <label for="id_username">Username*</label>
+            <input id="id_username" name="username" type="text">
+            <span>Enter your username.</span>
+        </li>
+        <li>
+            <label for="id_password">Password*</label>
+            <input id="id_password" name="password" type="password">
+            <span>Enter your password.</span>
+        </li>
+        <li>
+            <input type="hidden" name="next" value="{{ next }}">
+            <input class="success" type="submit" value="Log In">
+        </li>
+    </ul>
+    <div>
+</form>

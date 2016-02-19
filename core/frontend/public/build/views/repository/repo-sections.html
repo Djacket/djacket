@@ -1,0 +1,1 @@
+{% if template == 'browse' %} {% if objects %} {% include 'base/repo-browse.html' %} {% else %} {% include 'base/empty-repo.html' %} {% endif %} {% elif template == 'branches' %} {% include 'base/repo-branches.html' %} {% elif template == 'commits' %} {% include 'base/repo-commits.html' %} {% elif template == 'graphs' %} {% include 'base/repo-graphs.html' %} {% endif %}

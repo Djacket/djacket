@@ -1,0 +1,23 @@
+{% extends 'base/session-base.html' %}
+
+{% block page_title %}
+    Djacket / {{ target_user.username }}
+{% endblock %}
+
+{% block view_title %}
+    <header id="view-title">
+        <div class="left">
+            <h1>{{ target_user.username }}</h1>
+            <h2>{{ target_user.first_name }} {{ target_user.last_name }}</h2>
+        </div>
+        <div class="right">
+            joined <span class="moment-date">{{ target_user.date_joined|date:"c" }}</span>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <section id="user-deposit">
+        {% include 'base/deposit-item.html' %}
+    </section>
+{% endblock %}

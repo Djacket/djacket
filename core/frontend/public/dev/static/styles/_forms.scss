@@ -1,0 +1,136 @@
+/* Form design is borrowed from "http://www.sanwebe.com/2014/08/css-html-forms-designs" */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px $container-background inset;
+    -webkit-background:$container-background;
+    -webkit-text-fill-color: #fff !important;
+}
+
+form.djacket-form {
+    width: 100%;
+    margin:32px auto;
+    background:$container-background;
+    border-radius:2px;
+    padding:20px;
+
+    span.last-span {
+        margin-top: 6px;
+    }
+}
+
+form.djacket-form input {
+    background:$container-background;
+    color: #fff;
+}
+
+form.djacket-form h1{
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0px 0px 20px 0px;
+    color: #5C5C5C;
+    font-size:x-large;
+}
+
+form.djacket-form ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+form.djacket-form li{
+    display: block;
+    padding: 9px;
+    border:1px solid #DDDDDD;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+form.djacket-form li:last-child{
+    border:none;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+form.djacket-form li > label{
+    display: block;
+    float: left;
+    margin-top: -19px;
+    background: $container-background;
+    height: 14px;
+    padding: 2px 5px 2px 5px;
+    color: #B9B9B9;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+form.djacket-form input[type="text"],
+    form.djacket-form input[type="email"],
+    form.djacket-form input[type="date"],
+    form.djacket-form input[type="password"],
+    form.djacket-form input[type="file"],
+    form.djacket-form select {
+        @include border-box();
+        width: 100%;
+        display: block;
+        outline: none;
+        border: none;
+        height: 25px;
+        line-height: 25px;
+        font-size: 16px;
+        padding: 0;
+}
+
+form.djacket-form input[type="text"]:focus,
+    form.djacket-form input[type="email"]:focus
+    form.djacket-form input[type="date"]:focus
+    form.djacket-form input[type="password"]:focus
+    form.djacket-form input[type="file"]:focus
+    form.djacket-form select:focus {
+}
+
+form.djacket-form input[type="file"] {
+    margin: 4px 0;
+}
+
+form.djacket-form li > span{
+    background: $dark-blue;
+    display: block;
+    padding: 3px;
+    margin: 0 -9px -9px -9px;
+    text-align: center;
+    color: $green;
+    font-size: 11px;
+}
+
+form.djacket-form input[type="submit"] {
+    border: none;
+    padding: 10px 20px 10px 20px;
+    color: $dark-blue;
+}
+
+form.djacket-form input[type="submit"]:hover {
+    border: none;
+    padding: 10px 20px 10px 20px;
+    color: $dark-blue;
+}
+
+form.djacket-form input[type="submit"].success {
+    background: $green;
+    border-bottom: 3px solid $green-hover;
+}
+
+form.djacket-form input[type="submit"].success:hover {
+    background: $green-hover;
+    color: $dark-blue;
+}
+
+form.djacket-form input[type="submit"].danger {
+    background: $red;
+    border-bottom: 3px solid $red-hover;
+}
+
+form.djacket-form input[type="submit"].danger:hover {
+    background: $red-hover;
+    color: $dark-blue;
+}
+/* Form design is borrowed from "http://www.sanwebe.com/2014/08/css-html-forms-designs" */

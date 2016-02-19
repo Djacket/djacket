@@ -1,0 +1,30 @@
+{% extends 'repository/repo-main.html' %}
+
+{% block page_title %}
+    {{ repo.name }}'s Settings
+{% endblock %}
+
+{% block title_section %}
+    <h1><a href="/{{repo_owner}}/{{repo_name}}.git">{{ repo.name }}</a>'s Settings</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="static-tabs">
+        <ul class="tab-links">
+            <li class="active"><a href="#repo-info"><i class="fa fa-info"></i> Info</a></li>
+            <li><a href="#repo-area51"><i class="fa fa-exclamation-triangle"></i> Area 51</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="repo-info" class="tab active">
+                <div id="repo-info-settings">
+                    {% include 'base/repo-creation-form.html' %}
+                </div>
+            </div>
+            <div id="repo-area51" class="tab">
+                <div id="repo-area51-settings">
+                    {% include 'base/repo-area51-form.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
