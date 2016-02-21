@@ -22,7 +22,7 @@ Download latest release from https://github.com/Djacket/djacket/releases/latest,
 ```
 tar xzvf djacket-v0.1.0.tar.gz
 cd djacket-v0.1.0
-bash setup-djacket.sh
+sudo bash setup-djacket.sh
 ```
 after installation you can start Djacket by running
 ```
