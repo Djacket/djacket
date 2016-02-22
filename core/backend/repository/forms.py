@@ -32,7 +32,7 @@ def special_characters_validator(value):
             !, @, #, $, %, ^, &, *, (, ), +, =, {, }, [, ], :, ;, ", \, ', \, /, <, >, ',', ?
     """
 
-    if set('!@#$%^&*()+={}[]:;"\'\/<>,?').intersection(value):
+    if set('!@#$%^&*.()+={}[]:;"\'\/<>,?').intersection(value):
         raise forms.ValidationError(u'Repository name should only contain letters, numbers, hyphen and underscore.')
 
 
