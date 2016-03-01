@@ -1,5 +1,5 @@
 # Djacket
-A Git management system written in [Python/Django](https://www.djangoproject.com/). It's meant to be for personal
+A Git server written in [Python/Django](https://www.djangoproject.com/). It's meant to be for personal
 or small business usages. Installation is available and tested for Linux servers.
 
 <p align="center">
