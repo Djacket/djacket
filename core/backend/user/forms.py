@@ -162,9 +162,9 @@ class UserInfoForm(forms.ModelForm):
             Returns True if user attempted to change his/her password.
         """
 
-        assert old_password is not None, 'Old Password should not be None.'
-        assert new_password is not None, 'New Password should not be None.'
-
+        if old_password is None: raise ValueError('Old Password should not be None.')
+        if new_password is None: raise ValueError('New Password should not be None.')
+        
         if len(old_password) == 0 and len(new_password) == 0:
             return False
         elif len(old_password) == 0 and len(new_password) > 0:

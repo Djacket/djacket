@@ -60,7 +60,7 @@ class RepositoryCreationForm(forms.Form):
         """
 
         if instance is not None:
-            assert isinstance(instance, Repository), "Instance should be of Repository type."
+            if not isinstance(instance, Repository): raise TypeError('Instance should be of Repository type.')
             self.instance = instance
             self.repo_entering_name = instance.name  # store current repository name in case user changed it's name.
 
@@ -94,7 +94,7 @@ class RepositoryCreationForm(forms.Form):
             Updates given instance with provided data kwargs.
         """
 
-        assert self.instance is not None, "Instance object shoud not be None."
+        if self.instance is None: raise ValueError('Instance object shoud not be None.')
         self.instance.name = data['name']
         self.instance.description = data['description']
         self.instance.private = data['private']

@@ -35,7 +35,7 @@ class DataPresentation:
 
 
     def __init__(self, data_format):
-        assert data_format in self.VALID_DATA_FORMATS, 'Input data format is not a valid one.'
+        if not data_format in self.VALID_DATA_FORMATS: raise ValueError('Input data format is not a valid one.')
         self.data_format = data_format
 
 
@@ -111,7 +111,7 @@ class GitStatistics:
             Returns dataset for number of commits per given time interval.
         """
 
-        assert by in self.VALID_DATA_GENERATION_INTERVALS, 'Input interval is not a valid one.'
+        if not by in self.VALID_DATA_GENERATION_INTERVALS: raise ValueError('Input interval is not a valid one.')
 
         commits = self.repo.get_commits(self.rev)
 
