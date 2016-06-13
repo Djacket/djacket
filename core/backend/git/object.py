@@ -26,8 +26,8 @@ class GitObject:
 
     @abstractmethod
     def __init__(self, repo, kind, rev):
-        assert repo is not None, 'Repository reference is not passed'
-        assert repo.is_valid(), 'Entered repository is not valid'
+        if repo is None: raise ValueError('Repository reference is None')
+        if not repo.is_valid(): raise ValueError('Entered repository is not valid')
 
         self.repo = repo
         self.kind = kind
@@ -114,7 +114,7 @@ class GitBlob(GitObject):
     """
 
     def __init__(self, repo, path, rev='HEAD'):
-        assert path is not None, 'Path of blob should not be None'
+        if path is None: raise ValueError('Path of blob should not be None')
 
         super(GitBlob, self).__init__(repo, GIT_BLOB_OBJECT, rev)
         self.path = path
@@ -197,7 +197,7 @@ class GitTree(GitObject):
     """
 
     def __init__(self, repo, path, rev='HEAD'):
-        assert path is not None, 'Path of tree should not be None'
+        if path is None: raise ValueError('Path of tree should not be None')
 
         super(GitTree, self).__init__(repo, GIT_TREE_OBJECT, rev)
         self.path = path
@@ -289,7 +289,7 @@ class GitCommit(GitObject):
     """
 
     def __init__(self, repo, sha1_hash, rev='HEAD'):
-        assert sha1_hash is not None, 'SHA-1 hash of commit should not be None'
+        if sha1_hash is None: raise ValueError('SHA-1 hash of commit should not be None')
 
         super(GitCommit, self).__init__(repo, GIT_COMMIT_OBJECT, rev)
         self.sha1_hash = sha1_hash
