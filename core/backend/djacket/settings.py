@@ -24,19 +24,6 @@ FRONTEND_DIR = os.path.join(BASE_DIR, '..', 'frontend')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'a randomly generated string will be installed'
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-
-# For security reasons, set domain or host of your site in ALLOWED_HOSTS
-#   e.g.
-#       ALLOWED_HOSTS = ['.exampledomain.com']
-# You can find more details in https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts.
-
 
 # Application definition
 
@@ -98,7 +85,7 @@ WSGI_APPLICATION = 'djacket.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-	'NAME': os.path.join(BASE_DIR, '..', 'djacketdb.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, '..', 'db', 'djacketdb.sqlite3')
     }
 }
 
@@ -164,8 +151,31 @@ DJACKET_VERSION = '0.1.0'
 SITE_NAME = 'Djacket'
 
 
+# SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'a randomly generated string will be installed'
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True | False
+
+
+# For security reasons, set domain or host of your site in ALLOWED_HOSTS
+#   e.g.
+#       ALLOWED_HOSTS = ['.exampledomain.com']
+# You can find more details in https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts.
+
+
 # Git repositories deposit folder on server.
 # This folder can be set by initializing a variable called 'GIT_DEPOSIT_ROOT'.
 #   e.g.
 #       GIT_DEPOSIT_ROOT = '/path/to/your/deposit/folder'
-# Other variables from installation such as ALLOWED_HOSTS and SECRET_KEY will be set here.
+
+
+#####  envs.py module will be written during build process.  #####
+#####          This module will contain values for:          #####
+#   - SECRET_KEY
+#   - ALLOWED_HOSTS
+#   - DEBUG
+#   - GIT_DEPOSIT_ROOT
+
+from .envs import SECRET_KEY, ALLOWED_HOSTS, DEBUG, GIT_DEPOSIT_ROOT #pylint: disable=W0611,C0413,E0611
