@@ -28,7 +28,7 @@ var paths = {
         "scripts": build_folder + "static/scripts",
         "libs": build_folder + "static/libs",
         "views": build_folder + "views",
-        "ext": build_folder
+        "ext": build_folder + "static"
     }
 };
 
