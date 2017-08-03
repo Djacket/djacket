@@ -37,8 +37,7 @@ function read_yes_no {
 function validate_port {
     if ! [[ ${port} =~ ^[1-9][0-9]{1,4}$ ]]; then
         echo ":$port is not a valid port.";
-        echo "Example usage:";
-        echo "  ./djacket.sh 8085"; echo;
+        echo "You have enter a valid port number after your desired command.";
         exit 1;
     fi
 }
@@ -68,12 +67,10 @@ function script_help {
     echo;
     printf "${IN_RED}dev <port_number>${IN_DEF}\n";
     echo "  Starts development containers."; echo;
-    printf "${IN_RED}prod${IN_DEF}\n";
+    printf "${IN_RED}prod <port_number>${IN_DEF}\n";
     echo "  Starts production stack."; echo;
     printf "${IN_RED}stop${IN_DEF}\n";
     echo "  Stops production stack."; echo;
-    printf "${IN_RED}logs${IN_DEF}\n";
-    echo "  Tails production Docker containers logs."; echo;
     printf "${IN_RED}rm_dev${IN_DEF}\n";
     echo "  Removes development Docker containers."; echo;
     printf "${IN_RED}rm_dev_image${IN_DEF}\n";
@@ -200,7 +197,7 @@ function ask_for_paths {
 # Stops the production Docker containers.
 function stop {
     alert_if_not_installed;
-    docker-compose -f docker-compose.prod.yml stop;
+    docker stop djacket_web djacket_upstream djacket_prod_base;
 }
 
 # Starts development Docker containers.
@@ -214,14 +211,9 @@ function dev {
 # Starts production stack.
 function prod {
     setup;
+    export DJACKET_PROD_PORT=${port};
     docker-compose -f docker-compose.prod.yml build;
     docker-compose -f docker-compose.prod.yml up -d;
-}
-
-# Tails production Docker containers logs.
-function logs {
-    alert_if_not_installed;
-    docker-compose -f docker-compose.prod.yml logs -f;
 }
 
 # Removes development Docker containers.
@@ -263,6 +255,7 @@ function uninstall {
     if read_yes_no; then
         source "$SCRIPTDIR/.env";
         sudo rm -rf "$DB_FOLDER" "$DEPOSIT_FOLDER" "$STATIC_FOLDER" "$MEDIA_FOLDER";
+        stop;
         rm_dev;
         rm_dev_image;
         rm_prod;
@@ -283,11 +276,11 @@ if [[ "$1" == "dev" ]]; then
     validate_port;
     dev;
 elif [[ "$1" == "prod" ]]; then
+    port=${2};
+    validate_port;
     prod;
 elif [[ "$1" == "stop" ]]; then
     stop;
-elif [[ "$1" == "logs" ]]; then
-    logs;
 elif [[ "$1" == "rm_dev" ]]; then
     rm_dev;
 elif [[ "$1" == "rm_dev_image" ]]; then
