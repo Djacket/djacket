@@ -4,3 +4,9 @@
     - Repo creation/deletion/settings
     - Repo browsing/branches/commits/graphs
     - See other users public repos
+
+
+# 0.2.0 (August 4, 2017)
+* Djacket is dockerized.
+    - All the development/production processes are now moved to Docker.
+    - Lots of useless content is deleted.
