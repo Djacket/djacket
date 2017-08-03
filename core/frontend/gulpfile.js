@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var minifyHtml = require('gulp-minify-html');
 
@@ -17,12 +18,17 @@ var paths = {
         ],
         "views": [
             dev_folder + "views/**/*.html",
+        ],
+        "ext": [
+            dev_folder + "ext/**/*.*",
         ]
     },
     "build": {
         "styles": build_folder + "static/styles",
         "scripts": build_folder + "static/scripts",
+        "libs": build_folder + "static/libs",
         "views": build_folder + "views",
+        "ext": build_folder
     }
 };
 
@@ -43,6 +49,35 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest(paths.build.scripts));
 });
 
+gulp.task('libs', function () {
+    gulp
+        .src([
+            '../../node_modules/jquery/dist/jquery.min.js',
+            '../../node_modules/jquery-pjax/jquery.pjax.js',
+            '../../node_modules/highlightjs/highlight.pack.min.js',
+            '../../node_modules/nprogress/nprogress.js',
+            '../../node_modules/moment/min/moment.min.js',
+            '../../node_modules/marked/marked.min.js',
+            '../../node_modules/chart.js/Chart.min.js'
+        ])
+        .pipe(concat('djacket-libs.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.build.libs));
+
+    gulp
+        .src([
+            '../../node_modules/font-awesome/css/font-awesome.min.css',
+            '../../node_modules/devicons/css/devicons.min.css',
+            '../../node_modules/nprogress/nprogress.css',
+            '../../node_modules/highlightjs/styles/monokai-sublime.css'
+        ])
+        .pipe(concat('djacket-libs.css'))
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }).on('error', sass.logError))
+        .pipe(gulp.dest(paths.build.libs));
+});
+
 gulp.task('views', function () {
     gulp
         .src(paths.dev.views)
@@ -50,10 +85,16 @@ gulp.task('views', function () {
         .pipe(gulp.dest(paths.build.views));
 });
 
+gulp.task('ext', function () {
+    gulp
+        .src(paths.dev.ext)
+        .pipe(gulp.dest(paths.build.ext))
+})
+
 gulp.task('watch', function () {
     gulp.watch([paths.dev.styles, paths.dev.scripts, paths.dev.views], ['styles', 'scripts', 'views']);
 });
 
-gulp.task('default', ['watch']);    // Default task is for watching development folder for any changes.
+gulp.task('default', ['compile', 'watch']);    // Default task is for watching development folder for any changes.
 
-gulp.task('compile', ['styles', 'scripts', 'views']);   // Compile task will run all necessary tasks for frontend.
+gulp.task('compile', ['styles', 'scripts', 'libs', 'views', 'ext']);   // Compile task will run all necessary tasks for frontend.
