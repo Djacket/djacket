@@ -71,6 +71,8 @@ function script_help {
     echo "  Starts production stack."; echo;
     printf "${IN_RED}stop${IN_DEF}\n";
     echo "  Stops production stack."; echo;
+    printf "${IN_RED}up <prod|dev> <port_number>${IN_DEF}\n";
+    echo "  Just brings up the containers. no building."; echo;
     printf "${IN_RED}rm_dev${IN_DEF}\n";
     echo "  Removes development Docker containers."; echo;
     printf "${IN_RED}rm_dev_image${IN_DEF}\n";
@@ -216,6 +218,18 @@ function prod {
     docker-compose -f docker-compose.prod.yml up -d;
 }
 
+# Just brings up the containers. no building.
+function bring_up {
+    setup;
+    if [[ "$1" == "dev" ]]; then
+        export DJACKET_DEV_PORT=${port};
+        docker-compose -f docker-compose.dev.yml up;
+    elif [[ "$1" == "prod" ]]; then
+        export DJACKET_PROD_PORT=${port};
+        docker-compose -f docker-compose.prod.yml up -d;
+    fi
+}
+
 # Removes development Docker containers.
 function rm_dev {
     docker rm djacket_backend djacket_frontend djacket_dev_base;
@@ -279,6 +293,14 @@ elif [[ "$1" == "prod" ]]; then
     port=${2};
     validate_port;
     prod;
+elif [[ "$1" == "up" ]]; then
+    if [[ "$2" == "prod" || "$2" == "dev" ]]; then
+        port=${3};
+        validate_port;
+        bring_up $2 $3;
+    else
+        echo "You should type in 'prod' or 'dev' after the up command.";
+    fi
 elif [[ "$1" == "stop" ]]; then
     stop;
 elif [[ "$1" == "rm_dev" ]]; then
