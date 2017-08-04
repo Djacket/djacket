@@ -25,12 +25,13 @@ After cloning the project just type in:
 ```bash
     ./djacket.sh prod <expose_port>
 ```
-Now open web browser to your host address to see Djacket in production. This will also create a superuser with
+Now open web browser to your host address to see Djacket in production. NGINX logs will appear in nginx/logs and gunicorn logs in run/logs.<br>
+This process will also create a superuser with
 ```
     username: admin
     password: lukedidntknow
 ```
-credentials if there's not any. Keep in mind to change/remove this and create another one in Django admin panel.
+credentials, if there's not any. Keep in mind to change/remove this and create another one in Django admin panel. 
 
 
 # Contribution
