@@ -31,7 +31,11 @@ This process will also create a superuser with
     username: admin
     password: lukedidntknow
 ```
-credentials, if there's not any. Keep in mind to change/remove this and create another one in Django admin panel. 
+credentials, if there's not any. Keep in mind to change/remove this and create another one in Django admin panel.
+
+
+# Update
+Now you can update Djacket with only a ```git pull origin master``` call.
 
 
 # Contribution
