@@ -1,0 +1,45 @@
+version: '3.2'
+services:
+  djacket_prod_base:
+    container_name: djacket_prod_base
+    build: .
+    image: djacket_prod_image
+    env_file:
+      - ./.env
+    environment:
+      - DJKR_MODE=prod
+    entrypoint: /srv/docker-entrypoint-build.sh
+    volumes:
+      - ${DB_FOLDER}:/srv/db
+      - ${MEDIA_FOLDER}:/srv/media
+      - ${STATIC_FOLDER}:/srv/static
+      - ${DEPOSIT_FOLDER}:/srv/deposit
+      - ./core/frontend:/srv/core/frontend
+  djacket_upstream:
+    container_name: djacket_upstream
+    image: djacket_prod_image
+    working_dir: /srv/core/backend
+    env_file:
+      - ./.env
+    environment:
+      - DJKR_MODE=prod
+    command: gunicorn djacket.wsgi:application -c /srv/run/conf/djacket.gunicorn.conf -b 0.0.0.0:8080
+    volumes:
+      - ${DB_FOLDER}:/srv/db
+      - ${MEDIA_FOLDER}:/srv/media
+      - ${DEPOSIT_FOLDER}:/srv/deposit
+      - ./run:/srv/run
+      - ./core/backend:/srv/core/backend
+      - ./core/frontend:/srv/core/frontend
+  djacket_web:
+    container_name: djacket_web
+    image: nginx:latest
+    ports:
+      - "${DJACKET_PROD_PORT}:80"
+    volumes:
+      - ${MEDIA_FOLDER}:/srv/media
+      - ${STATIC_FOLDER}:/srv/static
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx/
+    depends_on:
+      - djacket_upstream

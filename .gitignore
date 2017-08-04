@@ -1,9 +1,16 @@
 node_modules
-bower_components
-
 
 __pycache__
+*.pyc
+.Python
+*.egg-info/
+*.egg
 
+.env
 
-libs/*
-!libs/README.md
+core/frontend/public/build/*
+
+*.sqlite3
+
+*.pid
+*.log

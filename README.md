@@ -7,80 +7,33 @@ or small business usages. Installation is available and tested for Linux servers
 </p>
 
 
+# What's New
+After a long period of time, Djacket is finally dockerized and much easier to use. If you are coming from version 0.1.0, please read the [migration guide](https://github.com/Djacket/djacket/wiki/Migration-from-v0.1.0) to keep yourself updated.
+
+
 # Requirements
-Djacket requires these packages:
-```
-- Git (version 1.8 or above)
-- Python3 and pip3 (any version of Python version 3.x)
-- Pillow imaging library (https://pypi.python.org/pypi/Pillow)
-```
-to be installed and working.
+You need to have ```Docker``` and ```docker-compose``` installed on your host.
 
 
-# Installation
-Download latest release from https://github.com/Djacket/djacket/releases/latest, then extract and install:
+# Getting Started
+After cloning the project just type in:
+```bash
+    ./djacket prod
 ```
-tar xzvf djacket-v0.1.0.tar.gz
-cd djacket-v0.1.0
-sudo bash setup-djacket.sh
+Now open web browser to your host address to see Djacket in production. This will also create a superuser with
 ```
-after installation you can start Djacket by running
+    username: admin
+    password: lukedidntknow
 ```
-./djacket.sh start 8080
-```
-Your web server should be configured to serve Djacket and it's static and media files. After installation, folder path for
-static and media files is printed out for server settings. [Nginx](http://nginx.org/en/) is the recommended web server (and it can work along with your existing installation of Apache too).
-In your Nginx configuration put (assuming your domain is example.com):
-```
-server {
-	listen 8585;
-	server_name example.com;
-	client_max_body_size 32M;
-
-	location / {
-        proxy_set_header Host $http_host;
-		proxy_pass http://0.0.0.0:8080;  # Port number Djacket is started on.
-	}
-
-    location /media {
-        alias /path/to/djacket-v0.1.0/core/media/;
-    }
-
-    location /static {
-        alias /path/to/djacket-v0.1.0/core/static/;
-    }
-}
-```
-Now if you visit http://example.com:8585, you have a fully functioning Djacket.
-
-
-For more details, troubleshooting or manual installation see [INSTALL](./INSTALL.md) file.
+credentials if there's not any. Keep in mind to change/remove this and create another one in Django admin panel.
 
 
 # Contribution
-Djacket's backend technology is [Python/Django](https://www.djangoproject.com/) v1.8. aside from this, libraries:
+For development mode you only have to type in:
+```bash
+    ./djacket dev <port_number>
 ```
-python-dateutil
-django-easy-pjax
-```
-are used, so if you want to make changes to backend you need these installed. These libraries will be provided inside libs
-folder for each release.
-
-Frontend is maintained using [gulpjs](http://gulpjs.com/) and [bower](http://bower.io/), so first make sure you have
-[nodejs](https://nodejs.org/en/) and gulp installed globally then inside core/frontend, run
-```
-npm install
-```
-Now you can make changes to frontend views, styles and scripts by modifying files in core/frontend/public/dev.
-Any changes you make will be compiled by gulp and pushed to build folder. So if you made any changes make sure to do
-```
-gulp compile
-```
-which runs the compilation task or if you are on constant development run
-```
-gulp
-```
-so default task will run (which is watching for file changes and pushing them to build folder)
+which takes care of everything. Don't forget about automatic superuser creation discussed above. Happy developing!
 
 
 # Issues
@@ -93,14 +46,13 @@ Project is fully documented and it can be reached by going to:
 ```
 /admin/doc/
 ```
-"docutils" package is required for browsing through.
 
 
 # License
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Djacket Project.
+Copyright (c) 2017 Djacket Project.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
