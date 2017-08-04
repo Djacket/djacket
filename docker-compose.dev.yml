@@ -1,0 +1,41 @@
+version: '3.2'
+services:
+  djacket_dev_base:
+    container_name: djacket_dev_base
+    build: .
+    image: djacket_dev_image
+    env_file:
+      - ./.env
+    environment:
+      - DJKR_MODE=dev
+    entrypoint: /srv/docker-entrypoint-build.sh
+    volumes:
+      - ./core/frontend:/srv/core/frontend
+      - ${DB_FOLDER}:/srv/db
+      - ${MEDIA_FOLDER}:/srv/media
+      - ${STATIC_FOLDER}:/srv/static
+      - ${DEPOSIT_FOLDER}:/srv/deposit
+  backend:
+    container_name: djacket_backend
+    image: djacket_dev_image
+    working_dir: /srv/core/backend
+    env_file:
+      - ./.env
+    environment:
+      - DJKR_MODE=dev
+    ports:
+      - "${DJACKET_DEV_PORT}:8080"
+    command: python manage.py runserver 0.0.0.0:8080
+    volumes:
+      - ./core/backend:/srv/core/backend
+      - ./core/frontend:/srv/core/frontend
+      - ${DB_FOLDER}:/srv/db
+      - ${MEDIA_FOLDER}:/srv/media
+      - ${DEPOSIT_FOLDER}:/srv/deposit
+  frontend:
+    container_name: djacket_frontend
+    image: djacket_dev_image
+    working_dir: /srv/core/frontend
+    command: gulp watch
+    volumes:
+      - ./core/frontend:/srv/core/frontend

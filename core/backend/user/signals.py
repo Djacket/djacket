@@ -15,7 +15,7 @@ def create_user_profile_signal(sender, instance, created, **kwargs):
     """
 
     if created:
-        stock_avatar_id = random.randint(0, 9) + 1
+        stock_avatar_id = random.randint(0, 1) + 1
         UserProfile.objects.create(user=instance, avatar='./stock/{0}.png'.format(stock_avatar_id))
 
 
