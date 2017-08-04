@@ -19,6 +19,7 @@ services:
     container_name: djacket_backend
     image: djacket_dev_image
     working_dir: /srv/core/backend
+    restart: always
     env_file:
       - ./.env
     environment:
@@ -36,6 +37,7 @@ services:
     container_name: djacket_frontend
     image: djacket_dev_image
     working_dir: /srv/core/frontend
+    restart: always
     command: gulp watch
     volumes:
       - ./core/frontend:/srv/core/frontend

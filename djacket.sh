@@ -149,7 +149,7 @@ function put_secret_key {
 #   for Djacket to start.
 function ask_for_envs {
     echo;
-    echo "  Asking for host details :->"; echo;
+    echo "Asking for host details :->"; echo;
     ask_for_hostname;
     echo "Asking for app-required paths :->";
     echo "  If a path you entered didn't exist, It will be created."; echo;
