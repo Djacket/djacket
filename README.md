@@ -12,13 +12,18 @@ After a long period of time, Djacket is finally dockerized and much easier to us
 
 
 # Requirements
-You need to have ```Docker``` and ```docker-compose``` installed on your host.
+Djacket requires [Docker](https://www.docker.com/) in order to work. You need to have
+```
+  - Docker (versions greater than 17.03.0-ce is recommended)
+  - docker-compose
+```
+installed on your host. Follow their [instruction](https://docs.docker.com/engine/installation/) to get up and running.
 
 
 # Getting Started
 After cloning the project just type in:
 ```bash
-    ./djacket prod
+    ./djacket.sh prod <expose_port>
 ```
 Now open web browser to your host address to see Djacket in production. This will also create a superuser with
 ```
@@ -31,7 +36,7 @@ credentials if there's not any. Keep in mind to change/remove this and create an
 # Contribution
 For development mode you only have to type in:
 ```bash
-    ./djacket dev <port_number>
+    ./djacket.sh dev <port_number>
 ```
 which takes care of everything. Don't forget about automatic superuser creation discussed above. Happy developing!
 
