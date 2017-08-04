@@ -36,7 +36,7 @@ if [ ! -d "/srv/media/stock" ]; then
         curl -m 5 "https://api.adorable.io/avatars/200/$i.png" > "/srv/media/stock/$i.png";
     done
 else
-    if [[ "$(ls /srv/media/stock | wc -l)" != "$stock_avatars" ]]; then
+    if [[ "$(ls /srv/media/stock | wc -l)" < "$stock_avatars" ]]; then
         for i in $(seq $stock_avatars $END); do
             curl -m 5 "https://api.adorable.io/avatars/200/$i.png" > "/srv/media/stock/$i.png";
         done
