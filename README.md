@@ -20,7 +20,12 @@ After cloning the project just type in:
 ```bash
     ./djacket prod
 ```
-Now open web browser to your host address to see Djacket in production.
+Now open web browser to your host address to see Djacket in production. This will also create a superuser user with
+```
+    username: admin
+    password: lukedidntknow
+```
+credentials if there's no admin users. Keep in mind to change/remove and create another one in Django admin panel.
 
 
 # Contribution
@@ -28,7 +33,7 @@ For development mode you only have to type in:
 ```bash
     ./djacket dev <port_number>
 ```
-which takes care of everything. Happy developing!
+which takes care of everything. Don't forget about automatic superuser creation discussed above. Happy developing!
 
 
 # Issues
