@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
+from django.views.static import serve
 from django.conf.urls import include, url
 
 from user.views import user_deposit
@@ -9,7 +10,6 @@ from djacket.views import index
 # Djacket main urls will be addressed here.
 
 urlpatterns = [
-    #url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}), # serve static medias on /media/*
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')), # project docs view.
     url(r'^admin/', include(admin.site.urls)), # admin interface.
     url(r'^', include('repository.urls')),  # import repository app urls with no prefix.
@@ -21,4 +21,4 @@ urlpatterns = [
 # serve static medias on /media/* while DEBUG settings are on
 if settings.DEBUG:
     urlpatterns = urlpatterns + \
-        [url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),]
+        [url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),]
