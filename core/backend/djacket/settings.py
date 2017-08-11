@@ -47,9 +47,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'easy_pjax',
-    'user',
-    'repository',
-    'filter'
+    'user.apps.UserAppConfig',
+    'repository.apps.RepositoryAppConfig',
+    'filter.apps.FilterAppConfig'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -71,12 +71,14 @@ TEMPLATES = [
         'DIRS': [os.path.join(FRONTEND_DIR, 'public', 'build', 'views'),],
         'APP_DIRS': True,
         'OPTIONS': {
+            'builtins': [
+                'easy_pjax.templatetags.pjax_tags'
+            ],
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.request',
             ],
         },
     },
