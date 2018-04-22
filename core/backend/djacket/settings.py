@@ -24,6 +24,8 @@ def osenv(env_name):
     return os.environ.get(env_name, '')
 
 
+IS_CI = osenv('DJKR_MODE') == 'ci'
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -95,7 +97,7 @@ WSGI_APPLICATION = 'djacket.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/srv/db/djacketdb.sqlite3'
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3') if IS_CI else '/srv/db/djacketdb.sqlite3'
     }
 }
 
@@ -118,7 +120,7 @@ USE_TZ = True
 # Static files will be collected to be served in 'BASE_DIR/../static/', outside of server code.
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/srv/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '/static/') if IS_CI else '/srv/static/'
 STATICFILES_DIRS = [os.path.join(FRONTEND_DIR, 'public', 'build', 'static'),]
 
 STATICFILES_FINDERS = (
@@ -130,7 +132,7 @@ STATICFILES_FINDERS = (
 # Media files (User avatar images)
 # Default is set to ''BASE_DIR/../media', outside of server code.
 
-MEDIA_ROOT = '/srv/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '/media/') if IS_CI else '/srv/media/'
 MEDIA_URL = '/media/'
 
 
@@ -153,7 +155,7 @@ SECRET_KEY = osenv('DSCT_KY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False if osenv('DJKR_MODE') in ['prod', ''] else True
+DEBUG = True if osenv('DJKR_MODE') in ['dev', 'ci'] else False
 
 
 # For security reasons, set domain or host of your site in ALLOWED_HOSTS
@@ -167,4 +169,4 @@ ALLOWED_HOSTS = ['*'] if DEBUG else ast.literal_eval(osenv('DALWD_HSTS'))
 # Git repositories deposit folder on server.
 #   This is where all the repos will be stored and maintained.
 
-GIT_DEPOSIT_ROOT = '/srv/deposit/'
+GIT_DEPOSIT_ROOT = os.path.join(BASE_DIR, '/deposit/') if IS_CI else '/srv/deposit/'
