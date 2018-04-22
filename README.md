@@ -1,4 +1,7 @@
 # Djacket
+[![Build Status](https://travis-ci.org/Djacket/djacket.svg?branch=master)](https://travis-ci.org/Djacket/djacket)
+[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+<br><br>
 A Git server written in [Python/Django](https://www.djangoproject.com/). It's meant to be for personal
 or small business usages. Installation is available and tested for Linux servers.
 
