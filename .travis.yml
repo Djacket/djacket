@@ -9,4 +9,4 @@ env:
 install: "pip install -r requirements.txt"
 before_script:
   - python core/backend/manage.py migrate
-script: python python core/backend/manage.py test
+script: python core/backend/manage.py test
