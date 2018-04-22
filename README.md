@@ -62,7 +62,7 @@ Project is fully documented and it can be reached by going to:
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Djacket Project.
+Copyright (c) 2018 Djacket Project.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
