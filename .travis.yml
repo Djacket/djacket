@@ -1,0 +1,12 @@
+sudo: false
+os:
+  - linux
+language: python
+python:
+  - "3.6"
+env:
+  - DJKR_MODE=ci DALWD_HSTS="['0.0.0.0','localhost']" DSCT_KY='secrettravissequence'
+install: "pip install -r requirements.txt"
+before_script:
+  - python core/backend/manage.py migrate
+script: python core/backend/manage.py test
