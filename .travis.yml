@@ -7,4 +7,6 @@ python:
 env:
   - DALWD_HSTS="['0.0.0.0','localhost']" DB_FOLDER=$TRAVIS_BUILD_DIR/djacket/db/ DEPOSIT_FOLDER=$TRAVIS_BUILD_DIR/djacket/deposit/ STATIC_FOLDER=$TRAVIS_BUILD_DIR/djacket/statics/ MEDIA_FOLDER=$TRAVIS_BUILD_DIR/djacket/media/ DSCT_KY='secrettravissequence' DJKR_MODE=prod
 install: "pip install -r requirements.txt"
-script: python core/backend/manage.py test
+before_script:
+  - python core/backend/manage.py migrate
+script: python python core/backend/manage.py test
