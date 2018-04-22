@@ -59,7 +59,7 @@ gulp.task('libs', function () {
             '../../node_modules/nprogress/nprogress.js',
             '../../node_modules/moment/min/moment.min.js',
             '../../node_modules/marked/marked.min.js',
-            '../../node_modules/chart.js/Chart.min.js'
+            '../../node_modules/chart.js/dist/Chart.min.js'
         ])
         .pipe(concat('djacket-libs.js'))
         .pipe(uglify())
