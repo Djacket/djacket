@@ -16,6 +16,7 @@ ADD requirements.txt /srv/requirements.txt
 RUN pip install -r requirements.txt
 
 COPY package.json /srv/package.json
+COPY package-lock.json /srv/package-lock.json
 RUN npm install
 
 COPY ./core/backend/ /srv/core/backend/
