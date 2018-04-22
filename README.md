@@ -13,14 +13,12 @@ or small business usages. Installation is available and tested for Linux servers
 # What's New
 After a long period of time, Djacket is finally dockerized and much easier to use. If you are coming from version 0.1.0, please read the [migration guide](https://github.com/Djacket/djacket/wiki/Migration-from-v0.1.0) to keep yourself updated.
 
+<br>
+_A rebase occurred in (April 22, 2018). If you faced merge conflicts upon pulling then run  `git reset --hard origin/master`._
+
 
 # Requirements
-Djacket requires [Docker](https://www.docker.com/) in order to work. You need to have
-```
-  - Docker (versions greater than 17.03.0-ce is recommended)
-  - docker-compose
-```
-installed on your host. Follow their [instruction](https://docs.docker.com/engine/installation/) to get up and running.
+Djacket requires [Docker](https://www.docker.com/) (> v17.03.0-ce) and [Docker Compose](https://docs.docker.com/compose/) in order to work. Follow their instructions to get up and running.
 
 
 # Getting Started
@@ -38,8 +36,8 @@ credentials, if there's not any. Keep in mind to change/remove this and create a
 
 
 # Update
-Now you can update Djacket with only a ```git pull origin master``` call.<br>
-_A rebase occurred in (April 22, 2018). If you faced merge conflicts upon pulling then run  `git reset --hard origin/master`._
+Now you can update Djacket with only a ```git pull origin master``` call.
+
 
 # Contribution
 For development mode you only have to type in:
