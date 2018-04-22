@@ -19,3 +19,8 @@
     - `404` errors for icons fixed.
     - JS scripts modified for new versions of `jQuery` and `Chart.js`.
     - `TypeError: get_available_name() got an unexpected keyword argument 'max_length'` issue fixed.
+
+
+# 0.2.2 (April 22, 2018)
+* TravisCI configuration added.
+    - Configuration for continuous integration in `Travis` build system added, regarding issue #10.
