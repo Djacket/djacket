@@ -38,8 +38,8 @@ credentials, if there's not any. Keep in mind to change/remove this and create a
 
 
 # Update
-Now you can update Djacket with only a ```git pull origin master``` call.
-
+Now you can update Djacket with only a ```git pull origin master``` call.<br>
+_A rebase occurred in (April 22, 2018). If you faced merge conflicts upon pulling then run  `git reset --hard origin/master`._
 
 # Contribution
 For development mode you only have to type in:
