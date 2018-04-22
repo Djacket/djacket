@@ -12,7 +12,7 @@ function setup_static_tabs () {
     });
 }
 
-$(document).on('ready', function () {
+jQuery(function ($) {
     setup_static_tabs();
 
     $('a[href="#auth"]').on('click', function () {

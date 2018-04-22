@@ -1,11 +1,12 @@
 FROM python:3.6
 
-LABEL maintainer="Moeen Zamani <moeenzdev@gmail.com>"
+LABEL maintainer="Moeen Zamani <moeen.zamani@gmail.com>"
 
-RUN apt-get update && apt-get install -y \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y \
+        nodejs \
         git \
-        nodejs-legacy \
-        npm
+        build-essential
 
 RUN npm install -g gulp
 
@@ -15,6 +16,7 @@ ADD requirements.txt /srv/requirements.txt
 RUN pip install -r requirements.txt
 
 COPY package.json /srv/package.json
+COPY package-lock.json /srv/package-lock.json
 RUN npm install
 
 COPY ./core/backend/ /srv/core/backend/

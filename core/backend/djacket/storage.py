@@ -9,7 +9,7 @@ class OverwriteStorage(FileSystemStorage):
         Overwrites to a file if it exists on file system.
     """
 
-    def get_available_name(self, name):
+    def get_available_name(self, name, max_length=None):
         """
             If a file with the given name exists in MEDIA_ROOT,
                 it will be removed otherwise it's name is returned.

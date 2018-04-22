@@ -120,19 +120,17 @@ function _show_weekly_graphs (dataset) {
         datasets: [
             {
                 label: "Weekly Commits",
-                fillColor: "rgba(57,221,0,0.2)",
-                strokeColor: "rgba(49,170,8,1)",
-                pointColor: "rgba(26, 103, 0, 1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(20, 75, 1, 1)",
+                backgroundColor: "rgba(57,221,0,0.2)",
+                borderColor: "rgba(49,170,8,1)",
+                pointBackgroundColor: "#fff",
+                pointBorderColor: "#fff",
                 data: weekly_datas
             }
         ]
     };
 
     var weekly_ctx = $("#repo-graphs #weekly-commits-graph").get(0).getContext("2d");
-    var weekly_commits = new Chart(weekly_ctx).Line(weekly_data);
+    var weekly_commits = new Chart(weekly_ctx, {type: 'line', data: weekly_data});
 }
 
 
@@ -152,19 +150,18 @@ function _show_monthly_graphs (dataset) {
         datasets: [
             {
                 label: "Monthly Commits",
-                fillColor: "rgba(57,221,0,0.2)",
-                strokeColor: "rgba(49,170,8,1)",
-                pointColor: "rgba(26, 103, 0, 1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(20, 75, 1, 1)",
+                backgroundColor: "rgba(57,221,0,0.2)",
+                borderColor: "rgba(49,170,8,1)",
+                borderWidth: 3,
+                pointBackgroundColor: "#fff",
+                pointBorderColor: "#fff",
                 data: monthly_datas
             }
         ]
     };
 
     var monthly_ctx = $("#repo-graphs #monthly-commits-graph").get(0).getContext("2d");
-    var monthly_commits = new Chart(monthly_ctx).Bar(monthly_data);
+    var monthly_commits = new Chart(monthly_ctx, {type: 'bar', data: monthly_data, options: {barThickness: 1.0}});
 }
 
 
@@ -194,19 +191,26 @@ function get_datasets () {
     }
 }
 
-
-$(document).on('ready', function () {
-    setup_nprogress();
-    setup_view_tabs();
-    setup_static_tabs();
-    setup_pjax();
-});
-
-
-$(document).on('ready pjax:end', function () {
+function setup_page () {
     highlight_codes();
     process_dates();
     setup_markdown();
     setup_file_icons();
     get_datasets();
+}
+
+// Called upon first page ready event.
+jQuery(function ($) {
+    setup_nprogress();
+    setup_view_tabs();
+    setup_static_tabs();
+    setup_pjax();
+    setup_page();
+});
+
+// Called upon every pjax request ending.
+jQuery(function ($) {
+    $(document).on('pjax:end', function () {
+        setup_page();
+    });
 });

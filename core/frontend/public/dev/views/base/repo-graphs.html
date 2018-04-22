@@ -6,8 +6,8 @@
         <div id="graphs-loader">
             {% include 'base/loading.html' %}
         </div>
-        <canvas id="weekly-commits-graph"></canvas>
-        <canvas id="monthly-commits-graph"></canvas>
+        <canvas id="weekly-commits-graph" width="840" height="160"></canvas>
+        <canvas id="monthly-commits-graph" width="840" height="160"></canvas>
     </div>
 {% else %}
     {% include 'base/repo-no-commits.html' %}
