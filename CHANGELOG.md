@@ -10,3 +10,12 @@
 * Djacket is dockerized.
     - All the development/production processes are now moved to Docker.
     - Lots of useless content is deleted.
+
+
+# 0.2.1 (April 22, 2018)
+* Minor fixes and updates.
+    - NPM packages updated along with adding `package-lock.json` file.
+    - `NodeJS` installation version changed to 8.x LTS.
+    - `404` errors for icons fixed.
+    - JS scripts modified for new versions of `jQuery` and `Chart.js`.
+    - `TypeError: get_available_name() got an unexpected keyword argument 'max_length'` issue fixed.
