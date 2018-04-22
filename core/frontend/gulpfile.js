@@ -26,6 +26,7 @@ var paths = {
     "build": {
         "styles": build_folder + "static/styles",
         "scripts": build_folder + "static/scripts",
+        "fonts": build_folder + "static/fonts",
         "libs": build_folder + "static/libs",
         "views": build_folder + "views",
         "ext": build_folder + "static"
@@ -76,6 +77,13 @@ gulp.task('libs', function () {
             outputStyle: 'compressed'
         }).on('error', sass.logError))
         .pipe(gulp.dest(paths.build.libs));
+    
+    gulp
+        .src([
+            '../../node_modules/font-awesome/fonts/*',
+            '../../node_modules/devicons/fonts/*',
+        ])
+        .pipe(gulp.dest(paths.build.fonts));
 });
 
 gulp.task('views', function () {
