@@ -11,8 +11,10 @@ or small business usages. Installation is available and tested for Linux servers
 
 
 # What's New
-After a long period of time, Djacket is finally dockerized and much easier to use. If you are coming from version 0.1.0, please read the [migration guide](https://github.com/Djacket/djacket/wiki/Migration-from-v0.1.0) to keep yourself updated.<br>
-_A rebase occurred in (April 22, 2018). If you faced merge conflicts upon pulling then run  `git reset --hard origin/master`._
+### v0.2.0
+Djacket is dockerized and so much easier to use. If you are coming from version 0.1.0, please read the [migration guide](https://github.com/Djacket/djacket/wiki/Migration-from-v0.1.0) to keep yourself updated.
+### v0.2.1
+A rebase occurred in (April 22, 2018). If you faced merge conflicts upon pulling then just run `git reset --hard origin/master`.
 
 
 # Requirements
