@@ -1,7 +1,7 @@
-import os
-import shlex
-import shutil
-from subprocess import Popen, PIPE, STDOUT
+import os, shlex, shutil, logging
+from subprocess import PIPE, run
+
+logger = logging.getLogger('django')
 
 
 def run_command(cmd, data, location, chw):
@@ -18,14 +18,15 @@ def run_command(cmd, data, location, chw):
     elif location is not None and chw is False:
         cmd = '{0} {1}'.format(cmd, location)
 
-    r = Popen(shlex.split(cmd), stdout=PIPE, stdin=PIPE, stderr=PIPE, cwd=cwd)
+    result = run(shlex.split(cmd), input=data, stdout=PIPE, stderr=PIPE, cwd=cwd)
+
+    if result.stderr != b'':
+        logger.info('RUN_COMMAND -> ERR ({})'.format(result.stderr))
 
     if data is None:
-        output = r.communicate()[0].decode('utf-8')
+        return result.stdout.decode('utf-8')
     else:
-        output = r.communicate(input=data)[0]
-
-    return output
+        return result.stdout
 
 
 def remove_tree(path):
