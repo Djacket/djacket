@@ -8,7 +8,7 @@ A free and open source Git server written in [Python/Django](https://www.djangop
 	<img src="index.png" alt="Index"/>
 </p>
 
-# What's New
+# Important Changes
 #### v0.2.0
 Djacket is dockerized and so much easier to use. If you are coming from version 0.1.0, please read the [migration guide](https://github.com/Djacket/djacket/wiki/Migration-from-v0.1.0) to keep yourself updated.
 #### v0.2.1

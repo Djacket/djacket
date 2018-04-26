@@ -24,3 +24,9 @@
 # 0.2.2 (April 22, 2018)
 * TravisCI configuration added.
     - Configuration for continuous integration in `Travis` build system added, regarding issue #10.
+
+
+# 0.2.3 (April 27, 2018)
+* Minor updates.
+    - Configured `Django` logging for production.
+    - Migrated from `Popen` to the new `run` function for calling system commands.
