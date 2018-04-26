@@ -1,3 +1,5 @@
+import logging
+
 from django.http import HttpResponse, HttpResponseNotFound
 
 from git.repo import Repo
@@ -6,6 +8,8 @@ from git.service import GIT_SERVICE_UPLOAD_PACK, GIT_SERVICE_RECEIVE_PACK
 GIT_HTTP_INFO_REFS = 1
 GIT_HTTP_SERVICE_UPLOAD_PACK = 2
 GIT_HTTP_SERVICE_RECEIVE_PACK = 3
+
+logger = logging.getLogger('django')
 
 
 def get_http_error(exception):
@@ -159,4 +163,5 @@ class GitResponse(HttpResponse):
                 self.set_response_payload(GIT_HTTP_SERVICE_UPLOAD_PACK)
             return self
         except BaseException as e:
+            logger.error(e)
             return get_http_error(e)
