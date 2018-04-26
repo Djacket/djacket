@@ -89,6 +89,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'djacket.wsgi.application'
 
 
+# SECURITY WARNING: don't run with debug turned on in production!
+
+DEBUG = True if osenv('DJKR_MODE') in ['dev', 'ci'] else False
+
+
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 # Currently there's not much of a database transaction (only on user/repository creation)
@@ -100,6 +105,35 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3') if IS_CI else '/srv/db/djacketdb.sqlite3'
     }
 }
+
+
+# Logging for production.
+if not DEBUG:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': '%(levelname)s %(asctime)s [%(module)s] %(process)d | %(message)s'
+            }
+        },
+        'handlers': {
+            'file': {
+                'level': 'DEBUG',
+                'formatter': 'verbose',
+                'class': 'logging.FileHandler',
+                'filename': '/srv/run/logs/django.log'
+            }
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
+                'propagate': True
+            }
+        }
+    }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -151,11 +185,6 @@ SITE_NAME = 'Djacket'
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = osenv('DSCT_KY')
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
-
-DEBUG = True if osenv('DJKR_MODE') in ['dev', 'ci'] else False
 
 
 # For security reasons, set domain or host of your site in ALLOWED_HOSTS
