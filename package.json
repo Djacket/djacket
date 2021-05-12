@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Djacket/djacket#readme",
   "devDependencies": {
-    "chart.js": "2.7.2",
+    "chart.js": "2.9.4",
     "devicons": "~1.8.0",
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
