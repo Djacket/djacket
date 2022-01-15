@@ -34,7 +34,7 @@
     "highlightjs": "^9.10.0",
     "jquery": "~3.3.1",
     "jquery-pjax": "~2.0.1",
-    "marked": "^0.3.19",
+    "marked": "^4.0.10",
     "moment": "^2.22.1",
     "nprogress": "~0.2.0"
   }
